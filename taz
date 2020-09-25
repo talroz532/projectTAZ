@@ -1,0 +1,82 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+int main()
+{
+
+FILE *info;
+
+info = fopen("info.txt","a+");
+
+
+char name[4];
+int x;
+
+printf("what is your name? ");
+gets(name);
+
+
+printf("enter your ID ");
+scanf("%d", &x);
+if(x>99999999){
+
+    printf("ERROR");
+}else{
+int a = (x/10000000)*1;
+int b = ((x/1000000)% 10)*2;
+int c = ((x/100000)% 10)*1;
+int d = ((x/10000)%10)*2;
+int e = ((x/1000)%10)*1;
+int f = ((x/100) %10)*2;
+int g = ((x/10) %10)*1;
+int h = ((x) %10)*2;
+
+
+/*
+printf("%d \n", a);
+printf("%d \n", b);
+printf("%d \n", c);
+printf("%d \n", d);
+printf("%d \n", e);
+printf("%d \n", f);
+printf("%d \n", g);
+printf("%d \n\n", h);
+*/
+
+
+
+int sum;
+sum = ((a % 10) + a/10) + ((b % 10) + b/10) + ((c % 10) + c/10) + ((d % 10) + d/10) + ((e % 10) + e/10) + ((f % 10) + f/10) + ((g % 10) + g/10) + ((h % 10) + h/10);
+
+// printf("%d", sum);
+
+if (0<sum && sum<10){
+ printf("\n Your last number is: %d \n ID: %d %d", (10-sum),x, (10-sum));
+    fprintf(info, "NAME:%s  ID:%d %d \n", name,x,(10-sum));
+
+} else if (10<sum && sum<20){
+
+ printf("\n Your last number is: %d \n ID: %d %d", (20-sum),x, (20-sum));
+    fprintf(info, "NAME:%s  ID:%d %d \n", name,x,(20-sum));
+} else if (20<sum && sum<30){
+
+ printf("\n Your last number is: %d \n ID: %d %d", (30-sum),x, (30-sum));
+    fprintf(info, "NAME:%s  ID:%d %d \n", name,x,(30-sum));
+}else if  (30<sum && sum<40){
+
+ printf("\n Your last number is: %d \n ID: %d %d", (40-sum),x, (40-sum));
+    fprintf(info, "NAME:%s  ID:%d %d \n", name,x,(50-sum));
+};
+
+
+
+
+
+
+
+fclose(info);
+
+}
+    return 0;
+}
